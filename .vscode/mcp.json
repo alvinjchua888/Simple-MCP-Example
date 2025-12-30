@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "math-server": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/alvinchua/Simple MCP Example",
+        "run",
+        "math-mcp-server"
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "math-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server providing basic math operations: add, multiply, subtract, divide",
+  "type": "module",
+  "bin": {
+    "math-mcp-server": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod 755 build/index.js",
+    "watch": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "build"
+  ],
+  "keywords": [
+    "mcp",
+    "math",
+    "calculator"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

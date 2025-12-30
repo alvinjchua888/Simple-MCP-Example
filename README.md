@@ -1,0 +1,129 @@
+# Math MCP Server
+
+A Model Context Protocol (MCP) server that provides basic mathematical operations.
+
+## Features
+
+This MCP server exposes four mathematical tools:
+
+- **add**: Add two numbers together
+- **multiply**: Multiply two numbers together
+- **subtract**: Subtract the second number from the first
+- **divide**: Divide the first number by the second (with zero-division protection)
+
+## Installation
+
+This server uses Python and `uv` for dependency management. Make sure you have `uv` installed:
+
+```bash
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Windows
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Install dependencies:
+```bash
+uv sync
+```
+
+## Usage
+
+### With Claude Desktop
+
+Add this configuration to your Claude Desktop config file:
+
+**macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+**Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "math": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/ABSOLUTE/PATH/TO/Simple MCP Example",
+        "run",
+        "math-mcp-server"
+      ]
+    }
+  }
+}
+```
+
+Replace `/ABSOLUTE/PATH/TO/Simple MCP Example` with the actual path to this project directory.
+
+### With VS Code
+
+The server is already configured in `.vscode/mcp.json`. VS Code with MCP support will automatically detect and use this configuration.
+
+### Testing with MCP Inspector
+
+You can test the server using the MCP Inspector:
+
+```bash
+npx @modelcontextprotocol/inspector uv --directory . run math-mcp-server
+```
+
+## Available Tools
+
+### add
+Adds two numbers together.
+
+**Parameters:**
+- `a` (number): First number to add
+- `b` (number): Second number to add
+
+**Example:** `add(5, 3)` returns `5 + 3 = 8`
+
+### multiply
+Multiplies two numbers together.
+
+**Parameters:**
+- `a` (number): First number to multiply
+- `b` (number): Second number to multiply
+
+**Example:** `multiply(4, 7)` returns `4 × 7 = 28`
+
+### subtract
+Subtracts the second number from the first.
+
+**Parameters:**
+- `a` (number): Number to subtract from
+- `b` (number): Number to subtract
+
+**Example:** `subtract(10, 4)` returns `10 - 4 = 6`
+
+### divide
+Divides the first number by the second.
+
+**Parameters:**
+- `a` (number): Number to be divided (numerator)
+- `b` (number): Number to divide by (denominator)
+
+**Example:** `divide(20, 4)` returns `20 ÷ 4 = 5`
+
+**Note:** Division by zero returns an error message.
+
+## Development
+
+### Run directly
+To run the server directly:
+```bash
+uv run math-mcp-server
+```
+
+### Project Structure
+```
+.
+├── server.py             # Main server implementation
+├── pyproject.toml        # Project dependencies and configuration
+└── README.md            # This file
+```
+
+## License
+
+MIT
