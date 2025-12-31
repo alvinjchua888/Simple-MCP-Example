@@ -76,3 +76,16 @@ async def sqrt(a: float) -> str:
     
     result = math.sqrt(a)
     return f"√{a} = {result}"
+
+
+@mcp.tool()
+async def to_integer(a: float) -> str:
+    """
+    Convert a number (including floats) to an integer.
+    Handles edge cases like negative numbers and decimal values.
+    
+    Args:
+        a: Number to convert to integer (positive, negative, or decimal)
+    """
+    result = int(a)
+    return f"{a} → {result}"
