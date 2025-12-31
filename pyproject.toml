@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "mcp>=1.2.0",
+    "streamlit>=1.31.0",
 ]
 
 [project.scripts]

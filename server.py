@@ -89,3 +89,7 @@ async def to_integer(a: float) -> str:
     """
     result = int(a)
     return f"{a} → {result}"
+
+
+if __name__ == "__main__":
+    mcp.run()

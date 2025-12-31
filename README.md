@@ -1,6 +1,6 @@
 # Math MCP Server
 
-A Model Context Protocol (MCP) server that provides basic mathematical operations.
+A Model Context Protocol (MCP) server that provides basic mathematical operations, with a Streamlit web client for easy interaction.
 
 ## Features
 
@@ -31,6 +31,20 @@ uv sync
 ```
 
 ## Usage
+
+### Streamlit Web Client (Recommended)
+
+The easiest way to interact with the Math MCP Server is through the Streamlit web interface:
+
+```bash
+uv run streamlit run app.py
+```
+
+This will start a web server (usually at http://localhost:8501) where you can:
+- Select math operations from a dropdown menu
+- Enter numbers in a user-friendly interface
+- See results displayed instantly
+- Get helpful error messages for invalid operations
 
 ### With Claude Desktop
 
@@ -133,16 +147,39 @@ Converts a number (including floats) to an integer. Handles edge cases like nega
 
 ## Development
 
+### Python Client Module
+
+The `client.py` module provides a Python API for interacting with the MCP server programmatically:
+
+```python
+from client import perform_operation
+
+# Perform operations
+result = perform_operation("add", 5, 3)
+print(result)  # "5.0 + 3.0 = 8.0"
+
+result = perform_operation("sqrt", 16)
+print(result)  # "√16.0 = 4.0"
+```
+
 ### Run directly
 To run the server directly:
 ```bash
 uv run math-mcp-server
 ```
 
+### Run the Streamlit client
+To launch the web interface:
+```bash
+uv run streamlit run app.py
+```
+
 ### Project Structure
 ```
 .
-├── server.py             # Main server implementation
+├── server.py             # Main MCP server implementation
+├── client.py             # Python client module for MCP communication
+├── app.py                # Streamlit web frontend
 ├── pyproject.toml        # Project dependencies and configuration
 └── README.md            # This file
 ```
