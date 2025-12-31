@@ -101,11 +101,18 @@ class MathClient:
 def run_async(coro):
     """Run an async coroutine in a synchronous context."""
     try:
-        loop = asyncio.get_event_loop()
-    except RuntimeError:
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-    return loop.run_until_complete(coro)
+        # Check if there's already a running loop
+        asyncio.get_running_loop()
+        # If we get here without exception, we're in an async context
+        # This shouldn't happen in Streamlit, but handle it gracefully
+        raise RuntimeError("Cannot use run_async inside an async context")
+    except RuntimeError as e:
+        if "no running event loop" in str(e).lower():
+            # No running loop, use asyncio.run (preferred for Python 3.7+)
+            return asyncio.run(coro)
+        else:
+            # Re-raise if it's a different RuntimeError
+            raise
 
 
 async def _perform_operation(operation: str, a: float, b: float = None):
