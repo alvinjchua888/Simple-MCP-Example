@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Math MCP Server - Provides basic mathematical operations."""
 
+import math
 from mcp.server.fastmcp import FastMCP
 
 # Initialize FastMCP server
@@ -60,3 +61,18 @@ async def divide(a: float, b: float) -> str:
     
     result = a / b
     return f"{a} ÷ {b} = {result}"
+
+
+@mcp.tool()
+async def sqrt(a: float) -> str:
+    """
+    Calculate the square root of a number.
+    
+    Args:
+        a: Number to calculate the square root of
+    """
+    if a < 0:
+        raise ValueError("Error: Cannot calculate square root of a negative number")
+    
+    result = math.sqrt(a)
+    return f"√{a} = {result}"
