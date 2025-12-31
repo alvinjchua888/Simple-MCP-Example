@@ -17,9 +17,15 @@ class MathClient:
     @asynccontextmanager
     async def connect(self):
         """Connect to the Math MCP Server."""
+        import os
+        import sys
+        
+        # Get the absolute path to server.py
+        server_path = os.path.join(os.path.dirname(__file__), "server.py")
+        
         server_params = StdioServerParameters(
-            command="uv",
-            args=["--directory", ".", "run", "math-mcp-server"],
+            command=sys.executable,  # Use current Python interpreter
+            args=[server_path],
             env=None
         )
         
