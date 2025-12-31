@@ -4,12 +4,14 @@ A Model Context Protocol (MCP) server that provides basic mathematical operation
 
 ## Features
 
-This MCP server exposes four mathematical tools:
+This MCP server exposes six mathematical tools:
 
 - **add**: Add two numbers together
 - **multiply**: Multiply two numbers together
 - **subtract**: Subtract the second number from the first
 - **divide**: Divide the first number by the second (with zero-division protection)
+- **sqrt**: Calculate the square root of a number
+- **to_integer**: Convert a number to an integer
 
 ## Installation
 
@@ -107,6 +109,27 @@ Divides the first number by the second.
 **Example:** `divide(20, 4)` returns `20 ÷ 4 = 5`
 
 **Note:** Division by zero returns an error message.
+
+### sqrt
+Calculates the square root of a number.
+
+**Parameters:**
+- `a` (number): Number to calculate the square root of
+
+**Example:** `sqrt(16)` returns `√16 = 4.0`
+
+**Note:** Negative numbers return an error message.
+
+### to_integer
+Converts a number (including floats) to an integer. Handles edge cases like negative numbers and decimal values.
+
+**Parameters:**
+- `a` (number): Number to convert to integer
+
+**Examples:** 
+- `to_integer(3.7)` returns `3.7 → 3`
+- `to_integer(-5.9)` returns `-5.9 → -5`
+- `to_integer(42)` returns `42 → 42`
 
 ## Development
 
