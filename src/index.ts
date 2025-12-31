@@ -107,6 +107,39 @@ server.registerTool(
   }
 );
 
+// Register the sqrt tool
+server.registerTool(
+  "sqrt",
+  {
+    title: "Square Root Tool",
+    description: "Calculate the square root of a number",
+    inputSchema: {
+      a: z.number().describe("Number to calculate the square root of"),
+    },
+  },
+  async ({ a }) => {
+    if (a < 0) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: "Error: Cannot calculate square root of a negative number",
+          },
+        ],
+        isError: true,
+      };
+    }
+    return {
+      content: [
+        {
+          type: "text",
+          text: `√${a} = ${Math.sqrt(a)}`,
+        },
+      ],
+    };
+  }
+);
+
 // Start the server
 async function main() {
   const transport = new StdioServerTransport();
