@@ -2,7 +2,7 @@
   "servers": {
     "math-server": {
       "type": "stdio",
-      "command": "uv",
+      "command": "/Users/alvinchua/.local/bin/uv",
       "args": [
         "--directory",
         "/Users/alvinchua/Simple MCP Example",
@@ -12,3 +12,4 @@
     }
   }
 }
+
